@@ -4,9 +4,10 @@ MAINTAINER Igor Ajdisek <igor@3fs.si>
 # install build tools + ruby (with fpm gem for packaging) + nodejs
 RUN sudo apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive sudo apt-get install -qq -y --no-install-recommends \
-        subversion mercurial git-core build-essential ruby1.9.1 ruby1.9.1-dev && \
+        subversion mercurial git-core build-essential ruby1.9.1 ruby1.9.1-dev curl && \
     sudo gem install --no-rdoc --no-ri fpm && \
     sudo apt-get remove -y ruby1.9.1-dev
+RUN sudo apt-get install -y software-properties-common python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash
 RUN sudo apt-get install -y nodejs
 
